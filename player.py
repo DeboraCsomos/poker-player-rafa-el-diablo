@@ -1,6 +1,6 @@
 
 class Player:
-    VERSION = "Default Python folding player"
+    VERSION = "hurka"
 
     def betRequest(self, game_state):
         return 1000
