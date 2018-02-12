@@ -20,9 +20,7 @@ class Player:
 
         card1 = our_player["hole_cards"][0]["rank"]
         card2 = our_player["hole_cards"][1]["rank"]
-        if (len(active_players) == 2) and
-             (our_player["name"] in active_players) and 
-             (sarkanyok["name"] in active_players):
+        if (len(active_players) == 2) and (our_player["name"] in active_players) and (sarkanyok["name"] in active_players):
             return current_buyin - our_player["bet"] + min_raise
         if card1 == card2:
             if card1 in "AKQJ":
