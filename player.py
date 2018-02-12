@@ -27,10 +27,7 @@ class Player:
             if sarkanyok in active_players:
                 return current_buyin - our_player["bet"] + min_raise
             elif diamonds in active_players:
-                return current_buyin - our_player["bet"] + min_raise
-        elif (len(active_players == 3)):
-            if diamonds in active_players:
-                return 0    
+                return current_buyin - our_player["bet"] + min_raise 
         if card1 == card2:
             if card1 in "AKQJ":
                 return current_buyin - our_player["bet"] + min_raise * 2
