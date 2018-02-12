@@ -9,7 +9,7 @@ class Player:
                 card2 = player["hole_cards"][1]["rank"]
                 if card1 == card2:
                     return 1000
-                elif card1 in "AKQJ98" and card2 in "AKQJ98":
+                elif (card1 in "AKQJ98" or card1 == "10") and (card2 in "AKQJ98" or card2 == "10"):
                     return 1000
         return 0
 
