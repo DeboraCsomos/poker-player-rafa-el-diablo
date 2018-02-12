@@ -27,7 +27,10 @@ class Player:
             if sarkanyok in active_players:
                 return current_buyin - our_player["bet"] + min_raise
             elif diamonds in active_players:
-                return current_buyin - our_player["bet"] + min_raise    
+                return current_buyin - our_player["bet"] + min_raise
+        elif (len(active_players == 3)):
+            if diamonds in active_players:
+                return 0    
         if card1 == card2:
             if card1 in "AKQJ":
                 return current_buyin - our_player["bet"] + min_raise * 2
@@ -38,10 +41,13 @@ class Player:
                     return current_buyin - our_player["bet"] + min_raise
             return 0
         elif (card1 in "AKQJ98" or card1 == "10") and (card2 in "AKQJ98" or card2 == "10"):
+            if (current_buyin - our_player["bet"] > big_blind):
+                return 0
             return current_buyin - our_player["bet"]
         elif (card1 == "A" and card2 in "12345") or (card2 == "A" and card1 in "12345"):
+             if (current_buyin - our_player["bet"] > big_blind):
+                return 0
             return current_buyin - our_player["bet"]
-        
         return 0
 
     def showdown(self, game_state):
