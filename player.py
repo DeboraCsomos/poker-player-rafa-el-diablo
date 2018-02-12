@@ -8,9 +8,9 @@ class Player:
                 card1 = player["hole_cards"][0]["rank"]
                 card2 = player["hole_cards"][1]["rank"]
                 if card1 == card2:
-                    return int(game_state["current_buy_in"]) - int(player["bet"])
+                    return 1000
                 elif card1 in "AKQJ" or card2 == "AKQJ":
-                    return int(game_state["current_buy_in"]) - int(player["bet"])
+                    return 1000
         return 0
 
     def showdown(self, game_state):
