@@ -3,14 +3,18 @@ class Player:
     VERSION = "TOP STRATEGY RUSSIAN BOT"
 
     def betRequest(self, game_state):
+        current_buyin = game_state["current_buy_in"]
+        min_raise = game_state["minimum_raise"]
         for player in game_state["players"]:
             if player["name"] == "Rafa El Diablo":
                 card1 = player["hole_cards"][0]["rank"]
                 card2 = player["hole_cards"][1]["rank"]
                 if card1 == card2:
-                    return 1000
+                    if card1 in "AKQJ":
+                        return current_buyin - player["bet"] + min_raise * 2
+                    return current_buyin - player["bet"] + min_raise
                 elif (card1 in "AKQJ98" or card1 == "10") and (card2 in "AKQJ98" or card2 == "10"):
-                    return 1000
+                    return current_buyin - player["bet"]
         return 0
 
     def showdown(self, game_state):
