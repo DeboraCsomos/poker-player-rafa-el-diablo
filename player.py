@@ -10,6 +10,7 @@ class Player:
         active_players = []
         our_player = {}
         sarkanyok = {}
+        diamonds = {}
         for player in game_state["players"]:
             if player["status"] == "active":
                 active_players.append(player)
@@ -17,12 +18,16 @@ class Player:
                 our_player = player
             if player["name"] == "Kekszemu Lowsarkany":
                 sarkanyok = player
+            if player["name"] == "AceOfDiamonds":
+                diamonds = player
 
         card1 = our_player["hole_cards"][0]["rank"]
         card2 = our_player["hole_cards"][1]["rank"]
         if (len(active_players) == 2): 
             if sarkanyok in active_players:
                 return current_buyin - our_player["bet"] + min_raise
+            elif diamonds in active_players:
+                return current_buyin - our_player["bet"] + min_raise    
         if card1 == card2:
             if card1 in "AKQJ":
                 return current_buyin - our_player["bet"] + min_raise * 2
