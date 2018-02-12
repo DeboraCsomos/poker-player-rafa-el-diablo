@@ -16,8 +16,6 @@ class Player:
                     return current_buyin - player["bet"] + min_raise
                 elif (card1 in "AKQJ98" or card1 == "10") and (card2 in "AKQJ98" or card2 == "10"):
                     return current_buyin - player["bet"]
-                elif (current_buyin == big_blind):
-                    return current_buyin - player["bet"] + min_raise
         return 0
 
     def showdown(self, game_state):
