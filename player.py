@@ -8,11 +8,11 @@ class Player:
         big_blind = game_state["small_blind"] * 2
         community_cards = game_state["community_cards"]
         active_players = []
-        our_player = None
-        sarkanyok = None
+        our_player = {}
+        sarkanyok = {}
         for player in game_state["players"]:
             if player["status"] == "active":
-                active_players.append(player["name"])
+                active_players.append(player)
             if player["name"] == "Rafa El Diablo":
                 our_player = player
             if player["name"] == "Kekszemu Lowsarkany":
@@ -20,8 +20,9 @@ class Player:
 
         card1 = our_player["hole_cards"][0]["rank"]
         card2 = our_player["hole_cards"][1]["rank"]
-        if (len(active_players) == 2) and (our_player["name"] in active_players) and (sarkanyok["name"] in active_players):
-            return current_buyin - our_player["bet"] + min_raise
+        if (len(active_players) == 2): 
+            if sarkanyok in active_players:
+                return current_buyin - our_player["bet"] + min_raise
         if card1 == card2:
             if card1 in "AKQJ":
                 return current_buyin - our_player["bet"] + min_raise * 2
